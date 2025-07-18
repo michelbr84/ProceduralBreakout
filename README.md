@@ -4,14 +4,14 @@
 Um jogo arcade/puzzle do tipo quebra-blocos, feito em Python com Pygame. Cada partida possui um layout único de blocos gerado proceduralmente, tornando o desafio sempre novo. O objetivo é destruir todos os blocos sem deixar a bola cair.
 
 ## Índice
-- [Descrição](#descrição)
-- [Instalação](#instalação)
-- [Uso](#uso)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
-- [Autores](#autores)
-- [Agradecimentos](#agradecimentos)
-- [Notas Adicionais](#notas-adicionais)
+- [Procedural Breakout](#procedural-breakout)
+  - [Descrição](#descrição)
+  - [Índice](#índice)
+  - [Instalação](#instalação)
+  - [Uso](#uso)
+  - [Contribuição](#contribuição)
+  - [Agradecimentos](#agradecimentos)
+  - [Notas Adicionais](#notas-adicionais)
 
 ## Instalação
 1. Clone o repositório:
@@ -32,12 +32,6 @@ python main.py
 
 ## Contribuição
 Contribuições são bem-vindas! Abra issues ou pull requests.
-
-## Licença
-[MIT](LICENSE) (ou defina a licença desejada)
-
-## Autores
-- Seu Nome (e colaboradores)
 
 ## Agradecimentos
 - Comunidade Pygame
