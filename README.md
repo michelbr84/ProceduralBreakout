@@ -16,7 +16,7 @@ Um jogo arcade/puzzle do tipo quebra-blocos, feito em Python com Pygame. Cada pa
 ## Instalação
 1. Clone o repositório:
    ```sh
-   git clone <url-do-repo>
+   git clone https://github.com/michelbr84/ProceduralBreakout.git
    cd ProceduralBreakout
    ```
 2. Instale as dependências:
