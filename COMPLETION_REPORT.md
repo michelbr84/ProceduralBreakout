@@ -57,7 +57,8 @@
 7. **data/presplash.svg** - Arquivo SVG da splash screen
 8. **data/ICON_README.txt** - Instruções para ícone
 9. **data/SPLASH_README.txt** - Instruções para splash screen
-10. **COMPLETION_REPORT.md** - Este relatório
+10. **.github/workflows/build-android.yml** - Atualizado para versões não depreciadas
+11. **COMPLETION_REPORT.md** - Este relatório
 
 ## 🚀 Próximos Passos Recomendados
 
