@@ -5,6 +5,7 @@ from kivy.clock import Clock
 from kivy.core.window import Window
 from kivy.graphics import Color, Ellipse, Rectangle
 from kivy.uix.widget import Widget
+from kivy.metrics import dp
 
 # Configurações do jogo
 SCREEN_WIDTH = 800
@@ -17,7 +18,7 @@ PADDLE_COLOR = (0.78, 0.78, 0.86, 1)
 BALL_COLOR = (1, 1, 1, 1)
 TEXT_COLOR = (1, 1, 1, 1)
 
-# Configurações dos elementos
+# Configurações dos elementos (valores base)
 PADDLE_WIDTH = 100
 PADDLE_HEIGHT = 16
 BALL_RADIUS = 10
@@ -40,6 +41,11 @@ class GameWidget(Widget):
         self.level = 1
         self.sound_volume = 1.0
         self.show_block_hits = True
+        
+        # Scaling factors
+        self.scale_x = 1.0
+        self.scale_y = 1.0
+        self.update_scaling()
 
         # Elementos do jogo
         self.paddle = None
@@ -55,6 +61,31 @@ class GameWidget(Widget):
 
         # Configurar clock para atualização
         Clock.schedule_interval(self.update, 1.0 / FPS)
+        
+        # Bind window resize event
+        Window.bind(size=self.on_window_resize)
+    
+    def on_window_resize(self, window, size):
+        """Handle window resize event"""
+        self.update_scaling()
+    
+    def update_scaling(self):
+        """Update scaling factors based on window size"""
+        if self.width > 0 and self.height > 0:
+            self.scale_x = self.width / SCREEN_WIDTH
+            self.scale_y = self.height / SCREEN_HEIGHT
+            # Use uniform scaling to maintain aspect ratio
+            self.scale = min(self.scale_x, self.scale_y)
+        else:
+            self.scale = 1.0
+    
+    def scale_pos(self, x, y):
+        """Scale position coordinates"""
+        return x * self.scale, y * self.scale
+    
+    def scale_size(self, width, height):
+        """Scale size dimensions"""
+        return width * self.scale, height * self.scale
 
     def init_game(self):
         """Inicializar elementos do jogo"""
@@ -309,8 +340,10 @@ class GameWidget(Widget):
 
 class ProceduralBreakoutApp(App):
     def build(self):
-        # Configurar tamanho da janela
-        Window.size = (SCREEN_WIDTH, SCREEN_HEIGHT)
+        # Configurar tamanho da janela (apenas para desktop)
+        from kivy import platform
+        if platform in ('win', 'linux', 'macosx'):
+            Window.size = (SCREEN_WIDTH, SCREEN_HEIGHT)
         Window.clearcolor = BG_COLOR
 
         # Criar widget principal
