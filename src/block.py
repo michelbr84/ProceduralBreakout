@@ -1,5 +1,5 @@
 import pygame
-from src import settings
+
 
 def generate_hit_colors(max_hits=10):
     # Gera uma paleta de cores distintas para cada hit (do laranja ao azul escuro)
@@ -56,4 +56,4 @@ class Block:
                 if self.hits in BLOCK_HITS_TO_COLOR:
                     self.color = BLOCK_HITS_TO_COLOR[self.hits]
             return True
-        return False 
+        return False

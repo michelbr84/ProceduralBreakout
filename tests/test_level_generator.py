@@ -1,11 +1,12 @@
-import sys
 import os
+import sys
 import unittest
 
 # Adiciona o diretório raiz ao sys.path para importação dos módulos src
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from src import settings, level_generator
+from src import level_generator, settings
+
 
 class TestLevelGenerator(unittest.TestCase):
     def test_generate_blocks(self):
@@ -21,4 +22,4 @@ class TestLevelGenerator(unittest.TestCase):
                         self.assertIn(block['color'], settings.BLOCK_COLORS)
 
 if __name__ == '__main__':
-    unittest.main() 
+    unittest.main()

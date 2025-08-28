@@ -1,4 +1,5 @@
 import pygame
+
 from src import settings
 
 score_font = None
@@ -24,4 +25,4 @@ def draw_message(surface, msg, submsg=None):
     if submsg:
         info_surf = score_font.render(submsg, True, settings.MSG_COLOR)
         info_rect = info_surf.get_rect(center=(settings.SCREEN_WIDTH//2, settings.SCREEN_HEIGHT//2 + 30))
-        surface.blit(info_surf, info_rect) 
+        surface.blit(info_surf, info_rect)

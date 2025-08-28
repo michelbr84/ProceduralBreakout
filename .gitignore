@@ -1,0 +1,67 @@
+# Ambientes virtuais
+.venv/
+venv/
+buildozer_env/
+env/
+
+# Buildozer
+android_build/.buildozer/
+android_build/bin/
+android_build/dist/
+.buildozer/
+
+# Cache Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDEs e editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Arquivos de configuração local
+.env
+.env.local
+.env.production
+
+# Arquivos de teste
+.coverage
+.pytest_cache/
+htmlcov/
+
+# Arquivos de backup
+*.bak
+*.backup
+*~
+
+# Arquivos de build
+*.apk
+*.aab
+*.ipa

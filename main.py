@@ -1,10 +1,12 @@
-import pygame
 import random
-from src.paddle import Paddle
-from src.ball import Ball
-from src.block import Block, BLOCK_HIT_COLORS, BLOCK_HITS_TO_COLOR
-from src.level_generator import generate_blocks
+
+import pygame
+
 from src import settings
+from src.ball import Ball
+from src.block import BLOCK_HIT_COLORS, Block
+from src.level_generator import generate_blocks
+from src.paddle import Paddle
 
 pygame.init()
 screen = pygame.display.set_mode((settings.SCREEN_WIDTH, settings.SCREEN_HEIGHT))

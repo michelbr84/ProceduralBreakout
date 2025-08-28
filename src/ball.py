@@ -1,5 +1,7 @@
 import pygame
+
 from src import settings
+
 
 class Ball:
     def __init__(self):
@@ -45,4 +47,4 @@ class Ball:
             self.vx = self.speed * offset
 
     def draw(self, surface):
-        pygame.draw.circle(surface, self.color, (int(self.x), int(self.y)), self.radius) 
+        pygame.draw.circle(surface, self.color, (int(self.x), int(self.y)), self.radius)

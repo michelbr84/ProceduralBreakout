@@ -1,0 +1,70 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y python3-pip python3-venv git openjdk-17-jdk unzip libffi-dev libssl-dev
+    
+    - name: Install Buildozer
+      run: |
+        pip install buildozer Cython==0.29.36
+    
+    - name: Prepare build directory
+      run: |
+        mkdir -p android_build
+        cp main_kivy.py android_build/main.py
+        cp buildozer.spec android_build/
+        cp android_requirements.txt android_build/requirements.txt
+    
+    - name: Configure buildozer.spec
+      run: |
+        cd android_build
+        cat > buildozer.spec << 'EOF'
+        [app]
+        title = Procedural Breakout
+        package.name = proceduralbreakout
+        package.domain = org.proceduralbreakout
+        source.dir = .
+        source.include_exts = py,png,jpg,kv,atlas
+        version = 1.0
+        requirements = python3,kivy,numpy
+        orientation = landscape
+        fullscreen = 0
+        android.permissions = INTERNET
+        android.api = 33
+        android.minapi = 21
+        android.sdk = 33
+        android.ndk = 25b
+        android.archs = arm64-v8a,armeabi-v7a
+        android.accept_sdk_license = True
+        android.allow_backup = True
+        EOF
+    
+    - name: Build APK
+      run: |
+        cd android_build
+        buildozer -v android debug
+    
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: procedural-breakout-apk
+        path: android_build/bin/*.apk

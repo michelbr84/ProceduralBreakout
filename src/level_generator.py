@@ -1,6 +1,8 @@
 import random
+
 from src import settings
 from src.block import BLOCK_HIT_COLORS
+
 
 def generate_blocks(level=1):
     rows = random.randint(*settings.BLOCK_ROWS_RANGE)
@@ -18,4 +20,4 @@ def generate_blocks(level=1):
             else:
                 row.append({'exists': False})
         grid.append(row)
-    return grid 
+    return grid

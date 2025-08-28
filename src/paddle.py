@@ -1,5 +1,7 @@
 import pygame
+
 from src import settings
+
 
 class Paddle:
     def __init__(self):
@@ -26,4 +28,4 @@ class Paddle:
             self.move('right')
 
     def draw(self, surface):
-        pygame.draw.rect(surface, self.color, self.rect) 
+        pygame.draw.rect(surface, self.color, self.rect)
